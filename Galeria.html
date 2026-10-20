@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VerdeGalería - Tu mundo en imágenes</title>
+    <!-- Enlace a los estilos CSS -->
+    <link rel="stylesheet" href="Galeria.css">
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Fondo interactivo de hojas cayendo -->
+    <div class="interactive-bg" id="interactiveBg"></div>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="logo-container">
+            <i class="fa-solid fa-leaf logo-icon"></i>
+            <h1>Verde<span>Galería</span></h1>
+        </div>
+        <p class="tagline">Guarda, organiza y revive tus momentos naturales</p>
+    </header>
+
+    <!-- NAVBAR -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#hero"><i class="fa-solid fa-house"></i> Inicio</a></li>
+            <li><a href="#galeria"><i class="fa-solid fa-images"></i> Galería</a></li>
+            <li><a href="#carrusel-seccion"><i class="fa-solid fa-film"></i> Destacados</a></li>
+            <li><a href="#nosotros"><i class="fa-solid fa-seedling"></i> Acerca</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button id="btnSubirModal" class="btn-nav"><i class="fa-solid fa-cloud-arrow-up"></i> Subir Foto</button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h2>Captura la Belleza de Cada Instante</h2>
+            <p>Una plataforma diseñada para todas las edades donde puedes coleccionar tus recuerdos más preciados, organizarlos por álbumes temáticos y aplicarles estilo.</p>
+            <div class="hero-buttons">
+                <a href="#galeria" class="btn-primary cta-btn">Explorar Galería <i class="fa-solid fa-arrow-right"></i></a>
+                <button id="btnCtaGuardar" class="btn-secondary cta-btn"><i class="fa-solid fa-floppy-disk"></i> Gestionar Datos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT BLOCKS (Bloques de Características) -->
+    <section class="content-blocks">
+        <div class="block-card">
+            <i class="fa-solid fa-folder-tree"></i>
+            <h3>Álbumes Inteligentes</h3>
+            <p>Clasifica tus fotos en Naturaleza, Familia, Viajes y Retratos de manera sencilla.</p>
+        </div>
+        <div class="block-card">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <h3>Filtros y Efectos</h3>
+            <p>Dale toques artísticos únicos a tus imágenes instantáneamente con filtros de color.</p>
+        </div>
+        <div class="block-card">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h3>Seguro y Local</h3>
+            <p>Tus fotos se guardan en tu navegador de forma segura. Carga y descarga cuando gustes.</p>
+        </div>
+    </section>
+
+    <!-- CARRUSEL SECTION -->
+    <section id="carrusel-seccion" class="carousel-container-section">
+        <h2>Álbum Destacado de la Semana</h2>
+        <div class="carousel">
+            <button class="carousel-btn prev-btn" id="prevSlide"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="carousel-track-container">
+                <ul class="carousel-track" id="carouselTrack">
+                    <!-- Elementos del carrusel inyectados por JS o estáticos -->
+                    <li class="carousel-slide current-slide">
+                        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=800&q=80" alt="Bosque Verde">
+                        <div class="carousel-caption"><h3>Atardecer en el Bosque</h3><p>Magia natural en tonos verdes</p></div>
+                    </li>
+                    <li class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80" alt="Sendero Verde">
+                        <div class="carousel-caption"><h3>Sendero Oculto</h3><p>Caminando entre la vegetación</p></div>
+                    </li>
+                    <li class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" alt="Plantas Hogar">
+                        <div class="carousel-caption"><h3>Vida en Casa</h3><p>Jardinería y paz interior</p></div>
+                    </li>
+                </ul>
+            </div>
+            <button class="carousel-btn next-btn" id="nextSlide"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- GALERÍA PRINCIPAL Y FILTROS -->
+    <main id="galeria" class="gallery-main-section">
+        <div class="gallery-header-controls">
+            <h2>Nuestra Colección de Fotos</h2>
+            
+            <div class="controls-bar">
+                <!-- Filtros por álbum -->
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="todos">Todos</button>
+                    <button class="filter-btn" data-filter="naturaleza">Naturaleza</button>
+                    <button class="filter-btn" data-filter="viajes">Viajes</button>
+                    <button class="filter-btn" data-filter="familia">Familia</button>
+                </div>
+
+                <!-- Barra de acciones de datos -->
+                <div class="data-actions">
+                    <button id="btnDescargarTodo" title="Descargar datos en JSON"><i class="fa-solid fa-download"></i> Descargar</button>
+                    <label for="inputCargarTodo" title="Cargar datos desde JSON" class="btn-file-label"><i class="fa-solid fa-upload"></i> Cargar</label>
+                    <input type="file" id="inputCargarTodo" accept=".json" style="display: none;">
+                </div>
+            </div>
+        </div>
+
+        <!-- TARJETAS DE LA GALERÍA -->
+        <div class="cards-grid" id="cardsGrid">
+            <!-- Las tarjetas se generan dinámicamente mediante JavaScript -->
+        </div>
+    </main>
+
+    <!-- CTA SECTION FINAL -->
+    <section class="cta-banner">
+        <div class="cta-content">
+            <h2>¿Listo para guardar tus propios recuerdos?</h2>
+            <p>Sube tus imágenes favoritas hoy mismo y manténlas organizadas y seguras en tu dispositivo.</p>
+            <button class="btn-primary" onclick="document.getElementById('btnSubirModal').click()">¡Comenzar Ahora!</button>
+        </div>
+    </section>
+
+    <!-- MODAL PARA SUBIR / AÑADIR FOTO -->
+    <div id="modalSubir" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3><i class="fa-solid fa-circle-plus"></i> Agregar Nueva Foto</h3>
+            <form id="formSubirFoto">
+                <div class="form-group">
+                    <label for="fotoTitulo">Título de la foto:</label>
+                    <input type="text" id="fotoTitulo" required placeholder="Ej: Mañana de primavera">
+                </div>
+                <div class="form-group">
+                    <label for="fotoAlbum">Seleccionar Álbum:</label>
+                    <select id="fotoAlbum">
+                        <option value="naturaleza">Naturaleza</option>
+                        <option value="viajes">Viajes</option>
+                        <option value="familia">Familia</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fotoUrl">URL de la Imagen (o sube archivo):</label>
+                    <input type="url" id="fotoUrl" placeholder="https://ejemplo.com/imagen.jpg">
+                    <div class="file-upload-wrapper">
+                        <span>O selecciona desde tu dispositivo:</span>
+                        <input type="file" id="fotoArchivo" accept="image/*">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="fotoFiltro">Aplicar Filtro Estético:</label>
+                    <select id="fotoFiltro">
+                        <option value="normal">Normal</option>
+                        <option value="sepia">Sepia Clásico</option>
+                        <option value="grayscale">Blanco y Negro</option>
+                        <option value="brightness">Alta Luminosidad</option>
+                        <option value="contrast">Alto Contraste</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary full-width">Guardar en Galería</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL PARA VER FOTO EN GRANDE -->
+    <div id="modalVista" class="modal">
+        <div class="modal-content modal-vista-content">
+            <span class="close-modal" id="closeModalVista">&times;</span>
+            <div class="modal-img-container">
+                <img id="imgVistaAmplia" src="" alt="Vista ampliada">
+            </div>
+            <h3 id="tituloVistaAmplia">Título</h3>
+            <p id="albumVistaAmplia" class="badge-album">Álbum</p>
+            <div class="modal-actions-bar">
+                <button id="btnDescargarFotoIndividual" class="btn-secondary"><i class="fa-solid fa-download"></i> Descargar Imagen</button>
+                <button id="btnEliminarFoto" class="btn-danger"><i class="fa-solid fa-trash"></i> Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3><i class="fa-solid fa-leaf"></i> VerdeGalería</h3>
+                <p>Plataforma fotográfica inclusiva, fresca y natural apta para todas las edades.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#carrusel-seccion">Destacados</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 VerdeGalería. Todos los derechos reservados. Diseñado con amor en tonos verde claro.</p>
+        </div>
+    </footer>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="Galeria.js"></script>
+</body>
+</html>
